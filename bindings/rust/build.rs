@@ -31,6 +31,10 @@ fn assembly(
 }
 
 fn main() {
+    if cfg!(feature = "nolink") {
+        return;
+    }
+
     if env::var("CARGO_FEATURE_SERDE_SECRET").is_ok() {
         println!(
             "cargo:warning=blst: non-production feature serde-secret enabled"
